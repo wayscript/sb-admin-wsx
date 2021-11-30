@@ -5,14 +5,13 @@ from flask import Flask, render_template, request
 # App Logic
 app = Flask(__name__)
 
-# DATABASE OPTIONS GO HERE
-# this list supplies the options that are generated in the home page selector
-# to add or remove entries from home page selector, put them in the list SELECTOR_OPTIONS below
 
-SELECTOR_OPTIONS = ['database_1', 'database_2', 'database_3']
-
-@app.route('/')
+@app.route('/database_form')
 def index():
+    # DATABASE OPTIONS GO HERE
+    # this list supplies the options that are generated in the home page selector
+    # to add or remove entries from home page selector, put them in the list SELECTOR_OPTIONS below
+    SELECTOR_OPTIONS = ['database_1', 'database_2', 'database_3']
     return render_template('index.html', selector_options = SELECTOR_OPTIONS )
 
 @app.route('/404')
@@ -50,7 +49,7 @@ def submit_form():
     result = 'Success!'
     return render_template('submit_form.html', selected_database = database_name, result = result)
 
-@app.route('/example')
+@app.route('/')
 def example_sb_admin_home():
     return render_template('example.html')
 
